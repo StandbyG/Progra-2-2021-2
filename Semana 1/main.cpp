@@ -1,6 +1,5 @@
 #include <conio.h>
 #include <iostream>
-#include <ctime>
 
 using namespace std;
 
@@ -18,12 +17,12 @@ void printArray(int *myArray, int n) {
 	cout << endl;
 }
 
-void findMajorNumber(int* myArray, int n) {
+void findMajorNumber(int *myArray, int n) {
 	int major = 0;
 	int position = -1;
 
 	for (int i = 0; i < n; i++) {
-		if (myArray[i] > major) {
+		if (major < myArray[i]) {
 			major = myArray[i];
 			position = i;
 		}
@@ -32,12 +31,12 @@ void findMajorNumber(int* myArray, int n) {
 	cout << "The major number in the array is: " << major << " and it's position is: " << position << endl;
 }
 
-void findMinorNumber(int* myArray, int n) {
+void findMinorNumber(int *myArray, int n) {
 	int minor = 100;
 	int position = -1;
 
 	for (int i = 0; i < n; i++) {
-		if (myArray[i] < minor) {
+		if (minor > myArray[i]) {
 			minor = myArray[i];
 			position = i;
 		}
@@ -46,7 +45,7 @@ void findMinorNumber(int* myArray, int n) {
 	cout << "The minor number in the array is: " << minor << " and it's position is: " << position << endl;
 }
 
-void bubbleSort(int* myArray, int n) {
+void bubbleSort(int *myArray, int n) {
 	int aux;
 
 	for (int i = 0; i < n - 1; i++) {
@@ -60,7 +59,17 @@ void bubbleSort(int* myArray, int n) {
 	}
 }
 
-void percentageMajorAndMinorFifty(int *myArray, int n) {
+void showAverageNumber(int *myArray, int n) {
+	int sum = 0;
+
+	for (int i = 0; i < n; i++) {
+		sum += myArray[i];
+	}
+
+	cout << "The average of the array is: " << double(sum) / n << endl;
+}
+
+void percentageMajorMinorFifty(int* myArray, int n) {
 	int majorCounter = 0;
 	int minorCounter = 0;
 
@@ -80,40 +89,45 @@ void percentageMajorAndMinorFifty(int *myArray, int n) {
 
 	cout << "The percentage of numbers major fifty is: " << majorPercentage << "%" << endl;
 	cout << "The percentage of numbers minor fifty is: " << minorPercentage << "%" << endl;
+
 }
 
-void showAverageNumber(int* myArray, int n) {
-	int sum = 0;
-
-	for (int i = 0; i < n; i++) {
-		sum += myArray[i];
-	}
-
-	cout << "The average number is: " << double(sum) / n << endl;
+void menu() {
+	cout << "1. Print Values" << endl;
+	cout << "2. Find major number and position" << endl;
+	cout << "3. Find minor number and position" << endl;
+	cout << "4. Execute bubble sort" << endl;
+	cout << "5. Average number" << endl;
+	cout << "6. Show percetange" << endl;
+	cout << "7. Exit" << endl;
 }
 
 int main() {
 	srand(time(NULL));
-	int n = 10;
+	int option;
+	int n = 20;
 	int* myArray = new int[n];
 
 	generateData(myArray, n);
-	printArray(myArray, n);
-	cout << endl;
 
-	findMajorNumber(myArray, n);
-	findMinorNumber(myArray, n);
+	while (1){
+		menu();
+		cout << "Enter the option: "; cin >> option;
 
-	cout << endl;
-	cout << "Array Sorted" << endl;
-	bubbleSort(myArray, n);
-	printArray(myArray, n);
-	cout << endl;
-	showAverageNumber(myArray, n);
-	cout << endl;
-	percentageMajorAndMinorFifty(myArray, n);
+		switch(option){
+		case 1: printArray(myArray, n); break;
+		case 2: findMajorNumber(myArray, n); break;
+		case 3: findMinorNumber(myArray, n); break;
+		case 4: bubbleSort(myArray, n); break;
+		case 5: showAverageNumber(myArray, n); break;
+		case 6: percentageMajorMinorFifty(myArray, n); break;
+		case 7: exit(0);
+		}
 
-	
+		_getch();
+		system("cls");
+	}
+
 	_getch();
 	return 0;
 }
