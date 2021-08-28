@@ -1,10 +1,8 @@
 #pragma once
-#include <iostream>
-//string -> Almacena cadena de caracteres
 #include <string>
+#include <iostream>
 
 using namespace std;
-
 //Access Level -> Protected, Private, Public
 
 class Person {
@@ -14,21 +12,23 @@ private:
 	int age;
 	int DNI;
 	char gender;
-	int weight;
-	int height;
+	double weight;
+	double height;
 
 public:
 	//Metodos -> Funciones
-	//Constructor -> Inicializar los valores de mis atributos
+	//Contructor -> Inicializa los valores de los atributos
 	//Default Constructor
+	//Sobrecarga de constructores -> No se pueden crear mas de 1 constructor
+	//con el mismo orden de los parametros, causa conflicto entre ellos y te explota el pc 
 	Person() {
-		name = "Jose";
+		name = "";
 		age = 0;
-		gender = 'M';
 		generateDNI();
-		weight = 0;
-		height = 0;
-		cout << "Person constructor have been executed" << endl;
+		gender = 'M';
+		weight = 0.0;
+		height = 0.0;
+		cout << "Constructor have been executed" << endl;
 	}
 
 	Person(string name, int age, char gender) {
@@ -36,67 +36,74 @@ public:
 		this->age = age;
 		this->gender = gender;
 		generateDNI();
-		weight = 0;
-		height = 0;
-		cout << "Person constructor have been executed" << endl;
+		weight = 0.0;
+		height = 0.0;
+		cout << "Constructor have been executed" << endl;
 	}
 
-	Person(string name, int age, char gender, int DNI, int height, int weight) {
+	Person(string name, int age, char gender, double weight, double height) {
 		this->name = name;
 		this->age = age;
 		this->gender = gender;
-		this->DNI = DNI;
+		generateDNI();
 		this->height = height;
 		this->weight = weight;
+		cout << "Constructor have been executed" << endl;
 	}
 
 	//Destructor
-	~Person() {
-		cout << "Person destructor have been executed" << endl;
+	~Person(){
+		cout << "Destructor have been executed" << endl;
 	}
 
 	//Get -> Obtener informacion
-	string getName() { return name; }
-	int getAge() { return age; }
-	int getDNI() { return DNI; }
+	string getName();
+	int getAge();
+	int getDNI();
 	char getGender() { return gender; }
-	int getWeight() { return weight; }
-	int getHeight() { return height; }
+	double getWeight() { return weight; }
+	double getHeight() { return height; }
 
-	//Set -> Asignar/Modificar valores
+	//Set -> Asignar/Modificar Valores
 	void setName(string v) { name = v; }
 	void setAge(int v) { age = v; }
 	void setDNI(int v) { DNI = v; }
 	void setGender(char v) { gender = v; }
-	void setWeight(int v) { weight = v; }
-	void setHeight(int v) { height = v; }
+	void setWeight(double v) { weight = v; }
+	void setHeight(double v) { height = v; }
 
-	void getPersonInfo();
+	void getPersonInfo() {
+		cout << "Person info" << endl;
+		cout << "Name: " << name << endl;
+		cout << "Age: " << age << endl;
+		cout << "DNI: " << DNI << endl;
+		cout << "Gender: " << gender << endl;
+		cout << "Height: " << height << endl;
+		cout << "Weight: " << weight << endl;
+	}
 
 	bool isAdult() {
 		if (age >= 18) return true;
 		else return false;
+	}
+		 
+	void validateGender() {
+		if (gender != 'M' && gender != 'F') {
+			gender = 'M';
+		}
 	}
 
 	void generateDNI() {
 		DNI = rand() % 9999999 + 10000000;
 	}
 
-	void validateGender() {
-		if (gender != 'M' && gender != 'F') {
-			gender = 'M';
-		}
+	int calculateIMC() {
+		double idealWeight = weight / (height * height);
+
+		if (idealWeight < 20) return -1;
+		if (idealWeight >= 20 && idealWeight <= 25) return 0;
+		if (idealWeight > 25) return 1;
 	}
+
+
 };
-
-
-void Person::getPersonInfo() {
-	cout << "Person info: " << endl;
-	cout << "Name: " << name << endl;
-	cout << "Age: " << age << endl;
-	cout << "DNI: " << DNI << endl;
-	cout << "Gender: " << gender << endl;
-	cout << "Height: " << height << endl;
-	cout << "Weight: " << weight << endl;
-}
-
