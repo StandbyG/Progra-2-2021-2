@@ -1,6 +1,6 @@
 #pragma once
-#include <string>
 #include <iostream>
+#include <string>
 
 using namespace std;
 
@@ -14,14 +14,16 @@ public:
 	Time() {
 		hour = rand() % 24;
 		minute = rand() % 60;
-		second = rand() % 60; 
+		second = rand() % 60;
 	}
 
 	~Time() {}
 
+	int getHour() { return hour; }
+
 	string getCompleteTime() {
-		string aux; //hh:mm:ss
-		//Append ->encadenar datos en la variable string
+		//hh:mm:sec
+		string aux;
 		aux.append(to_string(hour));
 		aux.append(":");
 		aux.append(to_string(minute));
@@ -30,6 +32,4 @@ public:
 
 		return aux;
 	}
-
-	int getHour() { return hour; }
 };

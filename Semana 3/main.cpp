@@ -1,10 +1,7 @@
-#include <iostream>
-#include <ctime>
 #include <conio.h>
+#include "Eclipse.h"
 #include "ArrEclipse.h"
 #include "Character.h"
-
-using namespace std;
 
 void Menu() {
     cout << "1. Add Eclipse" << endl;
@@ -17,45 +14,61 @@ void Menu() {
 }
 
 int main() {
-   /* srand(time(NULL));
-    int option, position;
-    string type;
-    ArrEclipse* arr = new ArrEclipse();
+    //srand(time(NULL));
+    //int option, position;
+    //string type;
+    //ArrEclipse* arr = new ArrEclipse();
+
+    //while (1) {
+    //    Menu();
+    //    cout << "Input the option: "; cin >> option;
+    //    switch (option) {
+    //    case 1: arr->addEclipse(); cout << "Eclipse added" << endl; break;
+    //    case 2:
+    //        cout << "Input the position: "; cin >> position;
+    //        cout << "Input the new value: "; cin >> type;
+    //        arr->editEclipseType(position, type);
+    //        cout << "Eclipse edited" << endl; break;
+    //    case 3:
+    //        arr->deleteEclipse(); cout << "Eclipse deleted" << endl; break;
+    //    case 4: arr->printArray(); break;
+    //    case 5: arr->eclipsesVisiblesEurope(); break;
+    //    case 6: arr->eclipsesEarthquakes(); break;
+    //    case 7: arr->eclipsesInTheNight(); break;
+    //    }
+    //    _getch();
+    //    system("cls");//Console::Clear
+    //}
+
+    //delete arr;
+
+   
+
+    Character* c1 = new Character(0);
+    Character* c2 = new Character(1);
+    Character* c3 = new Character(2);
+    Character* c4 = new Character(3);
 
     while (1) {
-        Menu();
-        cout << "Input the option: "; cin >> option;
-        switch (option) {
-        case 1: arr->addEclipse(); cout << "Eclipse added" << endl; break;
-        case 2:
-            cout << "Input the position: "; cin >> position;
-            cout << "Input the new value: "; cin >> type;
-            arr->editEclipseType(position, type);
-            cout << "Eclipse edited" << endl; break;
-        case 3:
-            arr->deleteEclipse(); cout << "Eclipse deleted" << endl; break;
-        case 4: arr->printArray(); break;
-        case 5: arr->eclipsesVisiblesEurope(); break;
-        case 6: arr->eclipsesEarthquakes(); break;
-        case 7: arr->eclipsesInTheNight(); break;
-        }
-        _getch();
-        system("cls");
-    }
+        Console::CursorVisible = false;
+        c1->erase();
+        c1->move();
+        c1->draw();
 
-    delete arr;*/
+        c2->erase();
+        c2->move();
+        c2->draw();
 
-    Console::CursorVisible = false;
+        c3->erase();
+        c3->move();
+        c3->draw();
 
-    Character* c = new Character();
-
-    while (true) {
-        c->erase();
-        c->move();
-        c->draw();
+        c4->erase();
+        c4->move();
+        c4->draw();
         _sleep(100);
     }
 
-    _getch();
-    return 0;
+	_getch();
+	return 0;
 }

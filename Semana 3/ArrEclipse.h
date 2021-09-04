@@ -3,8 +3,8 @@
 
 class ArrEclipse {
 private:
-	Eclipse** arr;
 	int n;
+	Eclipse** arr;
 
 public:
 	ArrEclipse() {
@@ -24,7 +24,7 @@ public:
 
 		aux[n] = e;
 
-		n += 1;
+		n++;
 		arr = aux;
 	}
 
@@ -34,21 +34,13 @@ public:
 
 	void deleteEclipse() {
 		Eclipse** aux = new Eclipse * [n - 1];
-		
-		for (int i = 0; i < n; i++) {
+
+		for (int i = 0; i < n - 1; i++) {
 			aux[i] = arr[i];
 		}
 
-		n -= 1;
+		n--;
 		arr = aux;
-	}
-
-	void printArray() {
-		for (int i = 0; i < n; i++) {
-			cout << endl;
-			cout << "Eclipse " << i << endl;
-			arr[i]->printData();
-		}
 	}
 
 	void eclipsesVisiblesEurope() {
@@ -72,6 +64,14 @@ public:
 			if (arr[i]->getHour() >= 18) {
 				arr[i]->printData();
 			}
+		}
+	}
+
+	void printArray() {
+		for (int i = 0; i < n; i++) {
+			cout << endl;
+			cout << "Eclipse " << i << endl;
+			arr[i]->printData();
 		}
 	}
 

@@ -1,6 +1,6 @@
 #pragma once
-#include <string>
 #include <iostream>
+#include <string>
 
 using namespace std;
 
@@ -14,15 +14,14 @@ public:
 	Date() {
 		day = rand() % 30 + 1;
 		month = rand() % 12 + 1;
-		year = rand() % 11 + 2010; // 0 - 10 + 2010
+		year = rand() % 22 + 2000;
 	}
 
 	~Date(){}
 
 	string getCompleteDate() {
 		//dd/mm/yyyy
-		string aux; //dd/mm/yyyy
-		//Append ->encadenar datos en la variable string
+		string aux; 
 		aux.append(to_string(day));
 		aux.append("/");
 		aux.append(to_string(month));
@@ -31,5 +30,4 @@ public:
 
 		return aux;
 	}
-
 };
