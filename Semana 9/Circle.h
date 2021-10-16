@@ -1,5 +1,4 @@
 #pragma once
-#include <iostream>
 
 using namespace System::Drawing;
 
@@ -17,14 +16,15 @@ public:
 
 	~Circle(){}
 
-	void draw(Graphics^ g) { //Graphics -> Lienzo donde vamos a dibujar
-		Pen^ p = gcnew Pen(Color::FromArgb(rand() % 255, rand() % 255, rand() % 255), 5);
-		g->DrawEllipse(p, x, y, 2 * radio, 2 * radio);
+	void draw(Graphics^ g, Color color) {
+		/*Pen^ p = gcnew Pen(Color::Goldenrod, 5);
+		g->DrawEllipse(p, x, y, 2 * radio, 2 * radio);*/
+
+		SolidBrush^ b = gcnew SolidBrush(color);
+		g->FillEllipse(b, x, y, 2 * radio, 2 * radio);
 	}
 
 	double getArea() {
 		return 3.14 * radio * radio;
 	}
-
-
 };

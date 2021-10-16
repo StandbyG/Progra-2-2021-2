@@ -9,6 +9,7 @@ class Controller {
 private:
 	vector<Circle*> circles;
 	vector<MyRectangle*> myRectangles;
+
 public:
 	Controller(){}
 	~Controller(){}
@@ -17,17 +18,22 @@ public:
 		circles.push_back(c);
 	}
 
-	void addMyRectangle(MyRectangle* m) {
-		myRectangles.push_back(m);
+	void addMyRectangle(MyRectangle* r) {
+		myRectangles.push_back(r);
 	}
 
-	void drawEverything(Graphics^ g) {
-		for (int i = 0; i < circles.size(); i++) {
+	void drawEverything(Graphics^ g, Color color) {
+		for each (Circle* c in circles) {
+			c->draw(g, color);
+		}
+		/*for (int i = 0; i < circles.size(); i++) {
 			circles[i]->draw(g);
+		}*/
+		for each (MyRectangle * r in myRectangles) {
+			r->draw(g, color);
 		}
 
-		for (int i = 0; i < myRectangles.size(); i++) {
-			myRectangles[i]->draw(g);
-		}
 	}
+
 };
+
