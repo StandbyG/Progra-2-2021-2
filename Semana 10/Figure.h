@@ -13,7 +13,6 @@ protected:
 	int victories;
 
 public:
-
 	Figure(int x, int y) {
 		this->x = x;
 		this->y = y;
@@ -21,13 +20,13 @@ public:
 		place = 0;
 		victories = 0;
 	}
-
+	
 	~Figure(){}
 
 	virtual void draw(Graphics^ g) = 0;
 
 	void move() {
-		if (x + width <= 700) x += rand() % 5 + 10;
+		if (x + width <= 700) x += rand() % 10 + 5;
 		else arrive = true;
 	}
 
@@ -43,6 +42,8 @@ public:
 	void setVictories(int v) { victories = v; }
 	void setPlace(int v) { place = v; }
 	void increaseVictory() { victories++; }
+
+
 
 
 };

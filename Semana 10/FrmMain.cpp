@@ -1,6 +1,6 @@
 #include "FrmMain.h"
 
-using namespace FiguresRace;
+using namespace FiguresRaceRemake;
 
 int main() {
 	Application::Run(gcnew FrmMain());

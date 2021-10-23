@@ -11,7 +11,7 @@ public:
 	~MyDiamond() {}
 
 	void draw(Graphics^ g) {
-		Pen^ p = gcnew Pen(Color::Tomato, 3);
+		Pen^ p = gcnew Pen(Color::YellowGreen, 3);
 		g->DrawLine(p, x + width / 2, y, x, y + height / 2);
 		g->DrawLine(p, x, y + height / 2, x + width / 2, y + height);
 		g->DrawLine(p, x + width / 2, y + height, x + width, y + height / 2);

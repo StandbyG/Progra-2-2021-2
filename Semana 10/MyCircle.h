@@ -8,10 +8,10 @@ public:
 		height = 50;
 	}
 
-	~MyCircle(){}
+	~MyCircle() {}
 
 	void draw(Graphics^ g) {
-		Pen^ p = gcnew Pen(Color::DarkSlateBlue, 3);
+		Pen^ p = gcnew Pen(Color::DeepPink, 3);
 		g->DrawEllipse(p, x, y, width, height);
 	}
 };

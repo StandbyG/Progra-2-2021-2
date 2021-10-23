@@ -3,15 +3,15 @@
 
 class MyRectangle : public Figure {
 public:
-	MyRectangle(int x, int y) : Figure(x, y) {
+	MyRectangle(int x, int y) : Figure(x ,y){
 		width = 50;
-		height = 60;
+		height = 70;
 	}
 
-	~MyRectangle() {}
+	~MyRectangle(){}
 
 	void draw(Graphics^ g) {
-		Pen^ p = gcnew Pen(Color::Violet, 3);
+		Pen^ p = gcnew Pen(Color::MediumPurple, 3);
 		g->DrawRectangle(p, x, y, width, height);
 	}
 };

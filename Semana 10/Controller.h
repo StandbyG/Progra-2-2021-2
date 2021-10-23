@@ -12,16 +12,16 @@ private:
 
 public:
 	Controller() {
-		cont = 0;
 		circle = new MyCircle(0, 10);
 		rectangle = new MyRectangle(0, 110);
 		diamond = new MyDiamond(0, 210);
+		cont = 0;
 	}
 
-	~Controller() {}
+	~Controller(){}
 
 	void drawEverything(Graphics^ g) {
-		g->DrawLine(gcnew Pen(Color::Aquamarine, 5), 700, 0, 700, 300);
+		g->DrawLine(gcnew Pen(Color::Gainsboro, 3), 700, 0, 700, 300);
 		circle->draw(g);
 		rectangle->draw(g);
 		diamond->draw(g);
@@ -30,30 +30,30 @@ public:
 	void moveEverything() {
 		if (circle->getArrive()) {
 			circle->setPlace(++cont);
-			if (circle->getPlace() == 1) circle->increaseVictory();
+			if (circle->getPlace() == 1)circle->increaseVictory();
 		}
 		else circle->move();
 
 		if (rectangle->getArrive()) {
 			rectangle->setPlace(++cont);
-			if (rectangle->getPlace() == 1) rectangle->increaseVictory();
+			if (rectangle->getPlace() == 1)rectangle->increaseVictory();
 		}
 		else rectangle->move();
 
 		if (diamond->getArrive()) {
 			diamond->setPlace(++cont);
-			if (diamond->getPlace() == 1) diamond->increaseVictory();
+			if (diamond->getPlace() == 1)diamond->increaseVictory();
 		}
 		else diamond->move();
 	}
 
 	void again() {
 		circle->setX(0);
-		circle->setPlace(0); circle->setArrive(0);
+		circle->setPlace(0); circle->setArrive(false);
 		rectangle->setX(0);
-		rectangle->setPlace(0); rectangle->setArrive(0);
+		rectangle->setPlace(0); rectangle->setArrive(false);
 		diamond->setX(0);
-		diamond->setPlace(0); diamond->setArrive(0);
+		diamond->setPlace(0); diamond->setArrive(false);
 
 		cont = 0;
 	}
@@ -61,4 +61,5 @@ public:
 	MyCircle* getCircle() { return circle; }
 	MyRectangle* getRectangle() { return rectangle; }
 	MyDiamond* getDiamond() { return diamond; }
+	
 };
