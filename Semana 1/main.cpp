@@ -3,6 +3,9 @@
 
 using namespace std;
 
+
+
+
 void generateData(int *myArray, int n) {
 	for (int i = 0; i < n; i++) {
 		myArray[i] = rand() % 101;
